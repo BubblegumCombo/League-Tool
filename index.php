@@ -30,7 +30,7 @@
         
         if (!$_POST['password']) {
             
-            $error .= "A password is required!<br>";
+            $error .= "A password is required.<br>";
             
         } 
         
