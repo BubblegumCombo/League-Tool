@@ -1,0 +1,202 @@
+<html>
+    
+    <script type="text/javascript">
+    var canvas, ctx, flag = false,
+        prevX = 0,
+        currX = 0,
+        prevY = 0,
+        currY = 0,
+        dot_flag = false;
+
+    var x = "black",
+        y = 2;
+    
+    function init() {
+        canvas = document.getElementById('can');
+        ctx = canvas.getContext("2d");
+        w = canvas.width;
+        h = canvas.height;
+    
+        canvas.addEventListener("mousemove", function (e) {
+            findxy('move', e)
+        }, false);
+        canvas.addEventListener("mousedown", function (e) {
+            findxy('down', e)
+        }, false);
+        canvas.addEventListener("mouseup", function (e) {
+            findxy('up', e)
+        }, false);
+        canvas.addEventListener("mouseout", function (e) {
+            findxy('out', e)
+        }, false);
+    }
+    
+    function color(obj) {
+        switch (obj.id) {
+            case "green":
+                x = "green";
+                break;
+            case "blue":
+                x = "blue";
+                break;
+            case "red":
+                x = "red";
+                break;
+            case "yellow":
+                x = "yellow";
+                break;
+            case "orange":
+                x = "orange";
+                break;
+            case "black":
+                x = "black";
+                break;
+            case "white":
+                x = "white";
+                break;
+        }
+        if (x == "white") y = 14;
+        else y = 2;
+    
+    }
+    
+    function draw() {
+        ctx.beginPath();
+        ctx.moveTo(prevX, prevY);
+        ctx.lineTo(currX, currY);
+        ctx.strokeStyle = x;
+        ctx.lineWidth = y;
+        ctx.stroke();
+        ctx.closePath();
+    }
+    
+    function erase() {
+        var m = confirm("Want to clear?");
+        if (m) {
+            ctx.clearRect(0, 0, w, h);
+            document.getElementById("canvasimg").style.display = "none";
+        }
+    }
+    
+    function findxy(res, e) {
+        if (res == 'down') {
+            prevX = currX;
+            prevY = currY;
+            currX = e.clientX - canvas.offsetLeft;
+            currY = e.clientY - canvas.offsetTop;
+    
+            flag = true;
+            dot_flag = true;
+            if (dot_flag) {
+                ctx.beginPath();
+                ctx.fillStyle = x;
+                ctx.fillRect(currX, currY, 2, 2);
+                ctx.closePath();
+                dot_flag = false;
+            }
+        }
+        if (res == 'up' || res == "out") {
+            flag = false;
+        }
+        if (res == 'move') {
+            if (flag) {
+                prevX = currX;
+                prevY = currY;
+                currX = e.clientX - canvas.offsetLeft;
+                currY = e.clientY - canvas.offsetTop;
+                draw();
+            }
+        }
+    }
+    /* this is the function for changing the background image */
+    function myFunctionMid() {
+      document.getElementById("can").style.backgroundImage = "url('mid.jpg')" ;
+  }
+    function myFunctionBot() {
+      document.getElementById("can").style.backgroundImage = "url('bot.jpg')" ;
+
+}
+function myFunctionSR() {
+      document.getElementById("can").style.backgroundImage = "url('sr.jpg')" ;
+
+}
+        
+    </script>
+   <body onload="init()">
+
+        
+        <canvas id="can" width="960" height="753" style="border:2px solid; border-color:black; background-color: white;"></canvas>
+
+        <div id="colors">
+
+        <div style="position:absolute;top:12%;left:62%; color:white;">Choose Color</div>
+        <div style="position:absolute;top:15%;left:63%;width:15px;height:15px;background:green; border:2px solid; border-color:white;" id="green" onclick="color(this)"></div>
+        <div style="position:absolute;top:15%;left:65%;width:15px;height:15px;background:blue;border:2px solid; border-color:white;" id="blue" onclick="color(this)"></div>
+        <div style="position:absolute;top:15%;left:67%;width:15px;height:15px;background:red;border:2px solid; border-color:white;" id="red" onclick="color(this)"></div>
+        <div style="position:absolute;top:17%;left:63%;width:15px;height:15px;background:yellow;border:2px solid; border-color:white;" id="yellow" onclick="color(this)"></div>
+        <div style="position:absolute;top:17%;left:65%;width:15px;height:15px;background:orange;border:2px solid; border-color:white;" id="orange" onclick="color(this)"></div>
+        <div style="position:absolute;top:17%;left:67%;width:15px;height:15px;background:white;border:2px solid; border-color:black;" id="black" onclick="color(this)"></div>
+        <div style="position:absolute;top:22%;left:64%; color:white;">Eraser</div>
+        <div style="position:absolute;top:25%;left:65%;width:15px;height:15px;background:white;border:2px solid; border:2px solid; border-color:black;" id="white" onclick="color(this)"></div>
+   
+        <input type="button" value="clear" id="clr" size="23" onclick="erase()" style="position:absolute;top:32%;right:33%; color: black;">
+
+<!-- these are the buttons to change lanes -->
+    <button type="button" style="position:absolute;top:40%;right:30%; color: black;" onclick="myFunctionMid()"> Mid </button> 
+
+    <button type="button" style="position:absolute;top:45%;right:30%; color: black;" onclick="myFunctionBot()"> Bot </button>
+
+    <button type="button" style="position:absolute;top:40%;right:35%; color: black;" onclick="myFunctionSR()"> SR </button>
+
+
+<!-- -------------- -->
+
+
+}
+<!-- draggable stuff like minions and champs -->
+<script type="text/javascript">
+jQuery(function($){
+    $('.drag')
+        .click(function(){
+            $( this ).toggleClass("selected");
+        })
+        .drag("init",function(){
+            if ( $( this ).is('.selected') )
+                return $('.selected');
+        })
+        .drag(function( ev, dd ){
+            $( this ).css({
+                top: dd.offsetY,
+                left: dd.offsetX
+            });
+        });
+});
+
+</script>
+
+
+<div id="draggable" class="ui-widget-content">
+  
+
+  <div id="bminion" class="drag">
+  <img src="bminion.png"/>
+
+  </div>
+
+  <div id="rminion" class="drag">
+  <img src="rminion.png">
+  </div>
+  <div id="yasuo" class="drag">
+  <img alt="" src="yasuo.png"/>
+    </div>
+  <div id="akali" class="drag">
+  <img alt="" src="akali.png"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+    </body>
+    </html>
