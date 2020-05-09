@@ -24,7 +24,7 @@
         
         if (!$_POST['email']) {
             
-            $error .= "An email address is required!!<br>";
+            $error .= "An email address is required!<br>";
             
         } 
         
