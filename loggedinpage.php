@@ -43,7 +43,6 @@
 </nav>
 
 
-
     <div class="container-fluid" id="containerLoggedInPage">
 
         <textarea id="diary" class="form-control"><?php echo $diaryContent; ?></textarea>

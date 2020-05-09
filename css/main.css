@@ -11,7 +11,6 @@
     margin-top: 60px;
 }
 
-
 html {
     background-color: grey;
     -webkit-background-size: cover;
@@ -80,4 +79,10 @@ body {
     position: absolute;
     bottom: -483px;
     right: -1200px;
+}
+
+#champSelect {
+    position: absolute;
+    top: 45%;
+    right: 35%;
 }
