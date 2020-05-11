@@ -110,10 +110,30 @@ function myFunctionMid() {
     document.getElementById("can").style.backgroundImage = "url('images/mid.jpg')";
 }
 function myFunctionBot() {
-    document.getElementById("can").style.backgroundImage = "url('images/bot.PNG')";
+    document.getElementById("can").style.backgroundImage = "url('images/bot.jpg')";
 
 }
 function myFunctionSR() {
     document.getElementById("can").style.backgroundImage = "url('images/sr.jpg')";
+
+}
+function myFunctionTop() {
+    document.getElementById("can").style.backgroundImage = "url('images/top.jpg')";
+
+}
+function myFunctionDragon() {
+    document.getElementById("can").style.backgroundImage = "url('images/dragon.jpg')";
+
+}
+function myFunctionBaron() {
+    document.getElementById("can").style.backgroundImage = "url('images/baron.jpg')";
+
+}
+function myFunctionJGB() {
+    document.getElementById("can").style.backgroundImage = "url('images/jgb.jpg')";
+
+}
+function myFunctionJGR() {
+    document.getElementById("can").style.backgroundImage = "url('images/jgr.jpg')";
 
 }
