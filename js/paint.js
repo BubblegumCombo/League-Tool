@@ -110,7 +110,7 @@ function myFunctionMid() {
     document.getElementById("can").style.backgroundImage = "url('images/mid.jpg')";
 }
 function myFunctionBot() {
-    document.getElementById("can").style.backgroundImage = "url('images/bot.jpg')";
+    document.getElementById("can").style.backgroundImage = "url('images/bot.PNG')";
 
 }
 function myFunctionSR() {
