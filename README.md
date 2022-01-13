@@ -1,5 +1,5 @@
 # leagueplanner
- league coaching tool
+ League coaching tool
 
 A tool developed to help with league of legend education
 
